@@ -30,4 +30,5 @@ def sample_view(request):
 
 @api_view(['GET'])
 def some_view(request):
-    return Response({'GitHub_link': 'https://github.com/n0iz3on3/stocks_products_test'})
+    link = 'https://github.com/n0iz3on3/stocks_products_test'
+    return Response({'GitHub_link': link})
