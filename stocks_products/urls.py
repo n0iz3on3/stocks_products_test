@@ -22,5 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('logistic.urls')),
     path('api/v1/test/', sample_view),
-    path('api/v1/check/', some_view),
+    path('api/v1/git/', some_view),
 ]
