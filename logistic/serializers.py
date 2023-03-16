@@ -28,7 +28,7 @@ class StockSerializer(serializers.ModelSerializer):
 
     def validate_positions(self, value):
         if not value:
-            raise serializers.ValidationError("the order items are not specified")
+            raise serializers.ValidationError("items are not specified")
         items_ids = [item['product'].id for item in value]
         if len(items_ids) != len(set(items_ids)):
             raise serializers.ValidationError('duplicated items in the order')
@@ -46,5 +46,7 @@ class StockSerializer(serializers.ModelSerializer):
         stock = super().update(instance, validated_data)
         for item in positions:
             product = item.pop('product')
-            obj, created = StockProduct.objects.update_or_create(stock=stock, product=product, defaults=item)
+            obj, created = StockProduct.objects.update_or_create(stock=stock,
+                                                                 product=product,
+                                                                 defaults=item)
         return stock

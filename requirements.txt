@@ -4,4 +4,5 @@ psycopg2-binary
 django-filter
 python-dotenv
 gunicorn
+flake8
 requests
