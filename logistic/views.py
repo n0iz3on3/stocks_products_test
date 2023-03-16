@@ -1,4 +1,6 @@
+from rest_framework.decorators import api_view
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.response import Response
 from rest_framework.filters import SearchFilter, OrderingFilter
 
 from logistic.models import Product, Stock
@@ -19,3 +21,8 @@ class StockViewSet(ModelViewSet):
     filterset_fields = ['products']
     search_fields = ['products__title', 'products__description']
     ordering_fields = '__all__'
+
+
+@api_view(['GET'])
+def sample_view(request):
+    return Response('This is checking!')
